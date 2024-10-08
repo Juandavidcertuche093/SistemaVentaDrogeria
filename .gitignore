@@ -1,6 +1,10 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 /src/environments/
 
+# Ignorar la carpeta custom-sidenav dentro de shared
+/src/app/shared/components/custom-sidenav/
+/src/app/shared/components/sidebar01/
+
 # Compiled output
 /dist
 /tmp
