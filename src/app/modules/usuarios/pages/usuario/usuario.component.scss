@@ -1,0 +1,39 @@
+table{
+    width: 100%;
+    border-collapse: collapse; /* Elimina el espacio entre las celdas de la tabla */
+}
+
+.mat-elevation-z2 {
+    overflow-x: auto; /* Evita desbordamiento horizontal si la tabla es más grande que el contenedor */
+}
+
+mat-form-field{
+    font-size: 14px;
+    width: 100%;
+}
+
+/* Alineación centralizada de los encabezados de las tablas */
+th.mat-header-cell, td.mat-cell {
+    text-align: center;
+    padding: 8px; /* Agrega espacio alrededor del texto en las celdas */
+}
+
+/* Ajusta la columna de acciones */
+.acciones-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px; /* Espacio entre los botones */
+    padding: 8px 0; /* Mantiene el padding vertical uniforme */
+}
+
+/* Tamaño de los botones para que no distorsionen el tamaño de las celdas */
+.mat-icon-button {
+    height: 36px; /* Tamaño consistente para los botones */
+    width: 36px;
+}
+
+/* Tamaño consistente para los íconos */
+.mat-icon {
+    font-size: 24px; /* Ajusta el tamaño del ícono */
+}
