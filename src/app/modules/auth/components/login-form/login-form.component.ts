@@ -50,7 +50,7 @@ export class LoginFormComponent {
             rolDescripcion: data.value.rolDescripcion
           };
           this.utilidadServicio.guardarSesionUsuario(sesion)//solo se guarda la parate no sencible de los datos
-          this.router.navigate(['/Venta'])
+          this.router.navigate(['/venta'])
         } else {
           this.utilidadServicio.mostrarAlerta("Nombre o contraseñas incorrectas. Por favor, verifique tus credenciales e intentelo nuevamente", "Opps")
         }

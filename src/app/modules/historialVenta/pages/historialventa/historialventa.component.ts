@@ -55,7 +55,7 @@ export class HistorialventaComponent implements OnInit, AfterViewInit {
     {value: 'fecha', descripcion: 'Por fecha'},
     {value: 'numero', descripcion: 'Nuemero Venta'}
   ]
-  columnasTabla:String[]=['fechaRegistro','numeroDocumento','tipoPago','total','accion']
+  columnasTabla:String[]=['fechaRegistro','numeroDocumento','tipoPago','total','vendedor','accion']
   dataInicio: Venta[]=[]
   dataListaVenta = new MatTableDataSource(this.dataInicio);
   @ViewChild(MatPaginator)paginacionTabla!:MatPaginator

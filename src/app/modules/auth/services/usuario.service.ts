@@ -18,7 +18,7 @@ export class UsuarioService {
   constructor() { }
 
   iniciarSesion(request: Login):Observable<ResponseApi>{
-    return this.http.post<ResponseApi>(`${this.urlApi}IniciaSesion`, request)
+    return this.http.post<ResponseApi>(`${this.urlApi}IniciarSesion`, request)
     .pipe(
       tap(response => {
         if (response && response.value && response.value.token) {
