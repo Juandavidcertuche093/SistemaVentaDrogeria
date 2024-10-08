@@ -28,6 +28,4 @@ export class TokenService {
       removeCookie('token')// Utilizamos la función removeCookie para eliminar la cookie 'token'
     }
   }
-
- 
 }
