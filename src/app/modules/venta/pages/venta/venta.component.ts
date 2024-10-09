@@ -140,7 +140,7 @@ export class VentaComponent implements OnInit {
         tipoPago: this.tipoPagoDefecto,
         totalTexto: String(this.totalPAgar.toFixed()),//toFixed() a un número, puedes especificar cuántos dígitos decimales deseas que aparezcan
         IdUsuario: idUsuario, // Incluimos el ID del usuario logueado
-        UsuarioDescripcion: UsuarioDescripcion, // Incluimos la descripción del usuario (rol)
+        usuarioDescripcion: UsuarioDescripcion, // Incluimos la descripción del usuario (rol)
         detalleventa: this.listaMedicamentosParaVenta 
       }
 

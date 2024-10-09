@@ -7,7 +7,7 @@ export interface Venta {
     fechaRegistro?:string,
     totalTexto:string,
     IdUsuario:string
-    UsuarioDescripcion:string
+    usuarioDescripcion:string
     detalleventa: DetalleVenta[]
 }
 

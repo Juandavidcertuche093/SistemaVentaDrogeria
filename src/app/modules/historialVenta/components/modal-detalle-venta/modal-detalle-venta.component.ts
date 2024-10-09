@@ -33,7 +33,7 @@ export class ModalDetalleVentaComponent implements OnInit {
   fechaRegistro:String = '';
   numeroDocumento:String = '';
   tipoPago:String = '';
-  total:String='';
+  total:String= '';
   UsuarioDescripcion='';
   detalleVenta:DetalleVenta[]=[];
   columnasTabla:String[] = ["medicamento","cantidad","precio","total"]
@@ -45,6 +45,7 @@ export class ModalDetalleVentaComponent implements OnInit {
     this.numeroDocumento = _venta.numDocumento!;
     this.tipoPago = _venta.tipoPago;
     this.total = _venta.totalTexto;
+    this.UsuarioDescripcion = _venta.usuarioDescripcion;
     this.detalleVenta = _venta.detalleventa
   }
 
