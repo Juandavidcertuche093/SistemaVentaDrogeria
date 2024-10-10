@@ -86,9 +86,13 @@ export class ModalregistroComponent implements OnInit {
       correo: this.formularioUsuario.value.correo,
       idRol: this.formularioUsuario.value.idRol,
       rolDescripcion: "",
-      clave: this.formularioUsuario.value.clave,
+      // clave: this.formularioUsuario.value.clave,
+      clave: this.formularioUsuario.value.clave ? this.formularioUsuario.value.clave : this.datosUsuario?.clave,  // Usar clave actual si no hay nueva  
       esActivo: parseInt(this.formularioUsuario.value.esActivo)
     }
+   
+    // Verifica en la consola qué datos se están enviando
+    console.log('Datos del usuario a enviar:', _usurio);
 
     if(this.datosUsuario == null){
        //logica para craar el usuario

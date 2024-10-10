@@ -50,7 +50,14 @@ export class LoginFormComponent {
             rolDescripcion: data.value.rolDescripcion
           };
           this.utilidadServicio.guardarSesionUsuario(sesion)//solo se guarda la parate no sencible de los datos
-          this.router.navigate(['/venta'])
+          // Verificar el rol del usuario y redirigirlo
+          if (sesion.rolDescripcion === 'Administrador') {
+            this.router.navigate(['/dashboard']); // Redirige al dashboard si es Administrador
+          } else if (sesion.rolDescripcion === 'Empleado') {
+            this.router.navigate(['/venta']); // Redirige a venta si es Empleado
+          } else {
+            this.router.navigate(['/401']); // Si el rol no es válido, redirige a una página no autorizada
+          }
         } else {
           this.utilidadServicio.mostrarAlerta("Nombre o contraseñas incorrectas. Por favor, verifique tus credenciales e intentelo nuevamente", "Opps")
         }

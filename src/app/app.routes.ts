@@ -5,14 +5,14 @@ import {redirectGuard} from './core/guards/redirect.guard';
 
 export const routes: Routes = [
     {
-        path:'',//ruta principal
+        path:'',//ruta principal o ruta publica
         canActivate: [redirectGuard],
         loadChildren: () => import('./modules/auth/auth.module').then((m) => m.AuthModule)
     },
     {
         path:'',
         canActivate: [authGuard],
-        component:LayoutComponent,
+        component:LayoutComponent,//ruta protegida solo se puede acceder con un toekn de acceso 
         loadChildren: () => import ('./modules/layout/layout.routes').then((m) => m.layoutRoutes)
     }
 ];
