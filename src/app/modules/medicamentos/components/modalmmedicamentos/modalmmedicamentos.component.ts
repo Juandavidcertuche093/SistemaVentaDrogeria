@@ -94,7 +94,8 @@ export class ModalmmedicamentosComponent implements OnInit {
         stock: this.datosMedicamento.stock,
         precio: this.datosMedicamento.precio,
         esActivo: this.datosMedicamento.esActivo,
-        fechaVencimiento: this.datosMedicamento.fechaVencimiento,
+        // fechaVencimiento: this.datosMedicamento.fechaVencimiento,
+        fechaVencimiento: moment(this.datosMedicamento.fechaVencimiento, 'DD/MM/YYYY').toDate(), // Convierte el string a Date
         especificaciones: this.datosMedicamento.especificaciones
       });
   }
@@ -103,7 +104,7 @@ export class ModalmmedicamentosComponent implements OnInit {
     //logica para crear y actualizar el medicamento
     const fechaVenc = this.formularioMedicamento.value.fechaVencimiento instanceof moment
     ? this.formularioMedicamento.value.fechaVencimiento.format('DD/MM/YYYY')
-    : this.formularioMedicamento.value.fechaVencimiento;
+    : moment(this.formularioMedicamento.value.fechaVencimiento).format('DD/MM/YYYY'); // Convierte Date a string
 
     const _medicamento: Medicamento = {
       idMedicamento: this.datosMedicamento == null ? 0: this.datosMedicamento.idMedicamento,

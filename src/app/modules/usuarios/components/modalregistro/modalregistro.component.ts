@@ -47,7 +47,8 @@ export class ModalregistroComponent implements OnInit {
       nombreCompleto:['', [Validators.required]],
       correo: ['', [Validators.required, Validators.email]],
       idRol:['', [Validators.required]],      
-      clave:['', [Validators.minLength(5), Validators.required]],
+      // clave:['', [Validators.minLength(5), Validators.required]],
+      clave: ['',[Validators.minLength(5)]],
       esActivo:['1', [Validators.required]],
 
     });
@@ -73,7 +74,8 @@ export class ModalregistroComponent implements OnInit {
         nombreCompleto:this.datosUsuario.nombreCompleto,
         correo: this.datosUsuario.correo,
         idRol:this.datosUsuario.idRol,      
-        clave:this.datosUsuario.clave,
+        // clave:this.datosUsuario.clave,
+        clave: '',
         esActivo:this.datosUsuario.esActivo,
       })
   }
@@ -87,7 +89,7 @@ export class ModalregistroComponent implements OnInit {
       idRol: this.formularioUsuario.value.idRol,
       rolDescripcion: "",
       // clave: this.formularioUsuario.value.clave,
-      clave: this.formularioUsuario.value.clave ? this.formularioUsuario.value.clave : this.datosUsuario?.clave,  // Usar clave actual si no hay nueva  
+      clave: this.formularioUsuario.value.clave ? this.formularioUsuario.value.clave : undefined,
       esActivo: parseInt(this.formularioUsuario.value.esActivo)
     }
    

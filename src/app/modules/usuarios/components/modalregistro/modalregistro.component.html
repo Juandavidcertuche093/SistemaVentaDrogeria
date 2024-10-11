@@ -1,7 +1,7 @@
 <h2 mat-dialog-title>{{ tituloAccion }} Usuario</h2>
 
 <mat-dialog-content>
-    <form [formGroup]="formularioUsuario">
+    <form [formGroup]="formularioUsuario" novalidate>
         <mat-grid-list cols="1" rowHeight="80px">
 
             <!-- primera fila nombre-->
@@ -18,8 +18,14 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Correo</mat-label>
                     <input matInput autocomplete="off" formControlName="correo">
-                    <mat-icon matSuffix>mail</mat-icon>
+                    <mat-icon matSuffix>mail</mat-icon>                    
                 </mat-form-field>
+                <p
+                    *ngIf="formularioUsuario.get('correo')?.hasError('email') && formularioUsuario.get('correo')?.touched"
+                          class="font-medium text-red-500 text-xs mt-1 ml-1"
+                    >
+                    Este campo debe ser un email válido.
+                </p>
             </mat-grid-tile>
 
             <!-- tercera fila Rol-->
@@ -43,6 +49,12 @@
                         <mat-icon>{{ ocultarPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
                     </button>
                 </mat-form-field>
+                <p
+                    *ngIf="formularioUsuario.get('clave')?.hasError('minlength')"
+                    class="font-medium text-red-500 text-xs mt-1 ml-1"
+                    >
+                    Este campo debe tener más de 5 caracteres.
+                </p>
             </mat-grid-tile>
 
             <!-- quinta fila estado -->
