@@ -66,6 +66,7 @@ export class LoginFormComponent {
         this.mostrarLoading = false;
       },
       error: () => {
+        this.mostrarLoading = false;// Detener el loading en caso de error
         this.utilidadServicio.mostrarAlerta("Hubo un error con la conexión al servidor intentalo nuevamente mas tarde", "Opps");
       }
     });
