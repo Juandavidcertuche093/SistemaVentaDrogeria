@@ -37,3 +37,16 @@ th.mat-header-cell, td.mat-cell {
 .mat-icon {
     font-size: 24px; /* Ajusta el tamaño del ícono */
 }
+
+.stock-alto, .stock-bajo {
+    font-size: 1.1rem; /* Aumenta el tamaño del texto */
+    font-weight: bold; /* Mantén el texto en negrita */
+}
+
+.stock-alto {
+    color: rgb(81, 185, 21); /* Color verde para stock mayor a 10 */
+}
+  
+.stock-bajo {
+    color: orange; /* Color naranja para stock menor o igual a 10 */
+}

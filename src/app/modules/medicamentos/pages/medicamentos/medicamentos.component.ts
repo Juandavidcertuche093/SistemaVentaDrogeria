@@ -73,6 +73,16 @@ export class MedicamentosComponent implements OnInit, AfterViewInit {
     this.dataListaMedicamentos.filter = filterValue.trim().toLocaleLowerCase();
   }
 
+  //metodo para el valor del stock
+  getStockClass(stock: number): string {
+    if (stock > 10) {
+      return 'stock-alto'; // Clase para stock alto
+    } else if (stock <= 10) {
+      return 'stock-bajo'; // Clase para stock bajo
+    }
+    return '';
+  }
+
   //metodo para el modal de crear pmedicamento
   nuevoMedicamento(){
     this.dialog.open(ModalmmedicamentosComponent,{
