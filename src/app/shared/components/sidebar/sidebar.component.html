@@ -68,7 +68,12 @@
                 #rla="routerLinkActive"
                 [activated]="rla.isActive"
             >
-                <mat-icon [fontSet]="rla.isActive ? 'material-icons': 'material-icons-outlined'" matListItemIcon>{{ menu.icono }}</mat-icon>
+                <mat-icon [fontSet]="rla.isActive ? 'material-icons': 'material-icons-outlined'"
+                 matListItemIcon
+                 [ngStyle]="{ 'color': rla.isActive ? 'blue' : '#333333', 'opacity': rla.isActive ? '1' : '0.8' }">
+                 {{ menu.icono }}
+                </mat-icon>
+
                 <span matListItemTitle *ngIf="!sideNavCollapse()">{{ menu.nombre}}</span>
             </a>
         </mat-nav-list>
