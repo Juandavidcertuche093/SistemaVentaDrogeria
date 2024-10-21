@@ -1,53 +1,74 @@
 <p class="text-2xl font-bold text-sky-800 mb-5">Dashboard - Resumen Última Semana</p>
 
 <mat-card class="p-2 mt-5 mx-10 mb-10">
-    <mat-card-content>
-      <!-- Contenedor de las tarjetas centrado -->      
-        <div class="mb-12 grid gap-y-6 gap-x-6 md:grid-cols-2 xl:grid-cols-3 justify-center">
-          <!-- Tarjeta 1 -->
-            <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md max-w-xs">
-              <div class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-blue-600 to-blue-400 text-white shadow-blue-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
-                <div mat-card-avatar>
-                  <mat-icon>payments</mat-icon>
-                </div>
-              </div>
-              <div class="p-4 text-right">
-                <p class="block text-xl antialiased font-sans leading-normal font-bold text-blue-gray-600">Total Ingresos</p>
-                <p class="block antialiased tracking-normal font-sans text-xl font-semibold leading-snug text-blue-gray-900">$/.{{totalIngresos}}</p>
-              </div>
-            </div>
-          <!-- Tarjeta 2 -->
-            <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md max-w-xs">
-              <div class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-pink-600 to-pink-400 text-white shadow-pink-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
-                <div mat-card-avatar>
-                  <mat-icon>sell</mat-icon>
-                </div>
-              </div>
-              <div class="p-4 text-right">
-                <p class="block antialiased font-sans text-xl leading-normal font-bold text-blue-gray-600">Total Ventas</p>
-                <p class="block antialiased tracking-normal font-sans text-xl font-semibold leading-snug text-blue-gray-900">{{totalVentas}}</p>
-              </div>
-            </div>
-          <!-- Tarjeta 3 -->
-            <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md max-w-xs">
-              <div class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-green-600 to-green-400 text-white shadow-green-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
-                <div mat-card-avatar>
-                  <mat-icon>vaccines</mat-icon>
-                </div>
-              </div>
-              <div class="p-4 text-right">
-                <p class="block antialiased font-sans text-xl leading-normal font-bold text-blue-gray-600">Total Medicamentos</p>
-                <p class="block antialiased tracking-normal font-sans text-xl font-semibold leading-snug text-blue-gray-900">{{totalProductos}}</p>
-              </div>
+  <mat-card-content>
+    <!-- Contenedor de las tarjetas centrado -->      
+    <div class="mb-12 grid gap-y-6 gap-x-6 md:grid-cols-2 xl:grid-cols-3 justify-center">
+      <!-- Tarjeta 1 -->
+        <div class="relative flex flex-col bg-clip-border rounded-xl bg-blue-200 text-gray-700 shadow-sm max-w-xs">
+          <div class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-blue-600 to-blue-400 text-white shadow-blue-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
+            <div mat-card-avatar>
+              <mat-icon>payments</mat-icon>
             </div>
           </div>
-        <!-- barra de graficos   collections_bookmark-->
+          <div class="p-4 text-right">
+            <p class="block text-2xl font-bold">Total Ingresos</p>
+            <p class="text-2xl font-semibold">${{totalIngresos}}</p>
+            <p class="text-sm text-gray-500">Ingresos esta semana</p>
+          </div>
+        </div>
+      <!-- Tarjeta 2 -->
+        <div class="relative flex flex-col bg-clip-border rounded-xl bg-pink-200 text-gray-700 shadow-md max-w-xs">
+          <div class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-pink-600 to-pink-400 text-white shadow-pink-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
+            <div mat-card-avatar>
+              <mat-icon>sell</mat-icon>
+            </div>
+          </div>
+          <div class="p-4 text-right">
+            <p class="block text-2xl font-bold ">Total Ventas</p>
+            <p class="text-2xl font-semibold">{{totalVentas}}</p>
+            <p class="text-sm text-gray-500">Total ventas semana</p>
+          </div>
+        </div>
+      <!-- Tarjeta 3 -->
+        <div class="relative flex flex-col bg-clip-border rounded-xl bg-green-200 text-gray-700 shadow-md max-w-xs">
+          <div class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-green-600 to-green-400 text-white shadow-green-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
+            <div mat-card-avatar>
+              <mat-icon>vaccines</mat-icon>
+            </div>
+          </div>
+          <div class="p-4 text-right">
+            <p class="block text-2xl font-bold">Medicamentos</p>
+            <p class="text-2xl font-semibold">{{totalProductos}}</p>
+            <p class="text-sm text-gray-500">Total medicamentos en stock</p>
+          </div>
+        </div>
+      </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="p-2 mt-5 mx-10 mb-10">
+    <mat-card-content>
         <mat-card style="margin-top: 15px;">
             <mat-card-content>
                 <div style="width: 100%; height: 400px;">
                     <canvas id="chartBarras"></canvas>
                 </div>
-            </mat-card-content>
-        </mat-card>
+          </mat-card-content>
+        </mat-card> 
     </mat-card-content>
 </mat-card>
+
+<mat-card class="p-2 mt-5 mx-10 mb-10">
+  <mat-card-content>
+    <div style="width: 100%; height: 400px; margin-top: 20px;">
+      <canvas id="chartLineas"></canvas> <!-- Gráfico de líneas -->
+    </div>
+  </mat-card-content>
+</mat-card>
+
+
+
+
+
+

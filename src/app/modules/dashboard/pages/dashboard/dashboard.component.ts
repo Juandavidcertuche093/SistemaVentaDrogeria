@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { map } from 'rxjs/operators';
 //Angular Material
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+
 //Mostrar gráficos.
 import { Chart, registerables } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
@@ -14,7 +18,7 @@ Chart.register(...registerables);
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [MatCardModule, MatGridListModule, MatIconModule, BaseChartDirective, CommonModule],
+  imports: [MatCardModule, MatGridListModule, MatIconModule, BaseChartDirective, CommonModule, MatMenuModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
@@ -63,6 +67,32 @@ export class DashboardComponent implements OnInit {
     })
   }
 
+  mostrarGraficoLineas(labelGrafico: any[], dataGrafico: any[]) {
+    const chartLineas = new Chart('chartLineas', {
+      type: 'line',
+      data: {
+        labels: labelGrafico,
+        datasets: [{
+          label: 'Ventas',
+          data: dataGrafico,
+          fill: false,
+          borderColor: 'rgb(75, 192, 192)',
+          tension: 0.1
+        }]
+      },
+      options: {
+        maintainAspectRatio: false,
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  }
+
+
   ngOnInit(): void {
     this.dashboardServicio.resumen()
     .subscribe({
@@ -75,7 +105,9 @@ export class DashboardComponent implements OnInit {
           const arrayData: any[] = data.value.ventasUltimaSemana
           const labelTemp = arrayData.map((value) => value.fecha);
           const dataTemp = arrayData.map((value) => value.total);
-          this.mostrarGrafico(labelTemp,dataTemp);
+
+          this.mostrarGrafico(labelTemp,dataTemp); //Gráfico de barras
+          this.mostrarGraficoLineas(labelTemp, dataTemp);  // Gráfico de líneas
         }
       },
       error:(e) => {}
