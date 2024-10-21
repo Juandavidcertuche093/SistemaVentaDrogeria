@@ -10,36 +10,39 @@
 
         <!-- Botón para notificaciones con menú desplegable -->
         <button mat-icon-button [matMenuTriggerFor]="notificationMenu">
-            <mat-icon matBadge="3" matBadgeColor="warn">notifications</mat-icon>
+            <mat-icon matBadge="{{medicamentosStockBajo.length}}" matBadgeColor="warn">notifications</mat-icon>
         </button>
     
         <!-- Menú desplegable para mostrar notificaciones -->
-        <mat-menu #notificationMenu="matMenu">
+        <mat-menu #notificationMenu="matMenu" [overlapTrigger]="false" class="custom-notification-menu">
             <ng-container>
+
                 <!-- Título "Notificaciones" -->
-                <div style="padding: 8px 16px; font-weight: bold;">
+                <div class="p-2 text-">
                     Notificaciones
                 </div>
+
                 <!-- Línea separadora -->
                 <mat-divider></mat-divider>
-                <!-- Notificación 1 -->
-                <button mat-menu-item>
-                    <div class="my-2 w-60 text-base">
-                    <span>Acetaminofén está por vencer</span>
-                    </div>
-                </button>
-                <!-- Notificación 2 -->
-                <button mat-menu-item>
-                    <div class="my-2 w-60 text-base">
-                    <span>Ibuprofeno está por vencer</span>
-                    </div>
-                </button>
-                <!-- Notificación 3 -->
-                <button mat-menu-item>
-                    <div class="my-2 w-60 text-base">
-                    <span>Aciclovir tiene pocas unidades en el stock</span>
-                    </div>
-                </button>
+
+                <!-- Muestra los medicamentos con stock bajo -->
+                <ng-container *ngFor="let medicamento of medicamentosStockBajo">
+                    <button mat-menu-item>
+                        <div class="my-2 w-60 text-base">
+                            <span class="font-bold">{{ medicamento.nombre }}</span>
+                            <span> tiene pocas unidades en stock</span>
+                        </div>
+                    </button>
+                </ng-container>
+
+                <!-- Si no hay notificaciones -->
+                <ng-container *ngIf="medicamentosStockBajo.length === 0">
+                    <button mat-menu-item disabled>
+                      <span>No hay notificaciones</span>
+                    </button>
+                  </ng-container>
+
+                
             </ng-container>
         </mat-menu>
 

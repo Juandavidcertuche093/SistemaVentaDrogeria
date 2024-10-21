@@ -70,3 +70,8 @@ mat-sidenav-container{
 mat-sidenav, mat-sidenav-content{
     transition: all 500ms ease-in-out;
 }
+
+.custom-notification-menu {
+    min-width: 300px; /* Ajusta el ancho mínimo */
+    max-width: 400px; /* Ajusta el ancho máximo */
+  }

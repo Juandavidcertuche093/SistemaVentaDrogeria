@@ -17,6 +17,7 @@ import { Menu } from '../../../core/models/menu';
 import { MenuService } from '../../services/menu.service';
 import { UtilidadService } from '../../../services/utilidad.service';
 import { TokenService } from '../../../services/token.service';
+import {NotificacionesService} from '../../services/notificaciones.service'
 
 @Component({
   selector: 'app-sidebar',
@@ -26,6 +27,8 @@ import { TokenService } from '../../../services/token.service';
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
+
+  medicamentosStockBajo: any[] = [];
 
   //Una señal reactiva que registra si la barra lateral está contraída o no
   collapse = signal(true)
@@ -43,11 +46,14 @@ export class SidebarComponent {
     private tokenService: TokenService,
     private menuServicio: MenuService,
     private utilidadServicio: UtilidadService,
+    private notificacionesServicio: NotificacionesService,
     private router: Router
   ){}
 
 
   ngOnInit(): void {
+    //obtener notificaciones del stock
+    this.obtenerNotificacionesStock();
     // Obtener la sesión del usuario actual
     const usuario = this.utilidadServicio.obtenerSesionUsuario();
     // Si el usuario está presente
@@ -64,6 +70,17 @@ export class SidebarComponent {
         error:(e) => {}
       })
     }
+  }
+
+  obtenerNotificacionesStock() {
+    this.notificacionesServicio.btenerMedicamentosConStockBajo().subscribe({
+      next: (data) => {
+        this.medicamentosStockBajo = data;
+      },
+      error: (err) => {
+        console.error('Error obteniendo medicamentos con stock bajo', err);
+      }
+    });
   }
 
   logout() {
