@@ -47,25 +47,26 @@
   </mat-card-content>
 </mat-card>
 
-<mat-card class="p-2 mt-5 mx-10 mb-10">
+<!-- Contenedor para las tarjetas de gráficos -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mx-10">
+  <!-- Primera tarjeta con gráfico de barras -->
+  <mat-card class="p-2 mt-5 mb-10">
     <mat-card-content>
-        <mat-card style="margin-top: 15px;">
-            <mat-card-content>
-                <div style="width: 100%; height: 400px;">
-                    <canvas id="chartBarras"></canvas>
-                </div>
-          </mat-card-content>
-        </mat-card> 
+      <div style="width: 100%; height: 400px;">
+        <canvas id="chartBarras"></canvas>
+      </div>
     </mat-card-content>
-</mat-card>
+  </mat-card>
 
-<mat-card class="p-2 mt-5 mx-10 mb-10">
-  <mat-card-content>
-    <div style="width: 100%; height: 400px; margin-top: 20px;">
-      <canvas id="chartLineas"></canvas> <!-- Gráfico de líneas -->
-    </div>
-  </mat-card-content>
-</mat-card>
+  <!-- Segunda tarjeta con gráfico de líneas -->
+  <mat-card class="p-2 mt-5 mb-10">
+    <mat-card-content>
+      <div style="width: 100%; height: 400px;">
+        <canvas id="chartLineas"></canvas>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
 
 
 
