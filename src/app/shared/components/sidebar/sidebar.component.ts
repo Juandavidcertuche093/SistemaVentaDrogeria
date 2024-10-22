@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatMenuModule} from '@angular/material/menu';
 
-import { CustomSidenavComponent } from "../custom-sidenav/custom-sidenav.component";
+
 
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { Menu } from '../../../core/models/menu';
@@ -22,7 +22,7 @@ import {NotificacionesService} from '../../services/notificaciones.service'
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [MatToolbarModule, MatButtonModule, MatIconModule, MatSidenavModule,  RouterOutlet, OverlayModule, MatListModule, CustomSidenavComponent, RouterLink, RouterLinkActive, CommonModule, MatBadgeModule, MatMenuModule],
+  imports: [MatToolbarModule, MatButtonModule, MatIconModule, MatSidenavModule,  RouterOutlet, OverlayModule, MatListModule, RouterLink, RouterLinkActive, CommonModule, MatBadgeModule, MatMenuModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })

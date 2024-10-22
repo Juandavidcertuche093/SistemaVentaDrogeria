@@ -21,6 +21,7 @@
             <table mat-table [dataSource]="dataListaUsuario">
                 
                 <ng-container matColumnDef="nombreCompleto">
+                    <!-- <th mat-header-cell *matHeaderCellDef> Nombre Completo </th> -->
                     <th mat-header-cell *matHeaderCellDef> Nombre Completo </th>
                     <td mat-cell *matCellDef="let element"> {{element.nombreCompleto}} </td>
                 </ng-container>
@@ -36,7 +37,7 @@
                 </ng-container>
 
                 <ng-container matColumnDef="estado">
-                    <th mat-header-cell *matHeaderCellDef> Estado </th>
+                    <th mat-header-cell *matHeaderCellDef > Estado </th>
                     <td mat-cell *matCellDef="let element"> {{element.esActivo == 1 ? 'activo': 'No activo'}} </td>
                 </ng-container>
 
