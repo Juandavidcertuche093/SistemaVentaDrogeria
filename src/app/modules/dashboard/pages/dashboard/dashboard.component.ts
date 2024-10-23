@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
+
 //Angular Material
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
@@ -92,6 +93,47 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  mostrarGraficoDona(labelGrafico: any[], dataGrafico: any[]) {
+    const chartDona = new Chart('chartDona', {
+      type: 'doughnut', // Cambiado de 'line' a 'doughnut'
+      data: {
+        labels: labelGrafico,
+        datasets: [{
+          label: 'Ventas',
+          data: dataGrafico,
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',  // Colores para cada porción
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        maintainAspectRatio: false,
+        responsive: true,
+        cutout: '50%',  // Esto crea el espacio en el centro para el gráfico de dona
+        plugins: {
+          legend: {
+            position: 'top',  // Posición de la leyenda
+          }
+        }
+      }
+    });
+  }
+  
+
 
   ngOnInit(): void {
     this.dashboardServicio.resumen()
@@ -108,6 +150,7 @@ export class DashboardComponent implements OnInit {
 
           this.mostrarGrafico(labelTemp,dataTemp); //Gráfico de barras
           this.mostrarGraficoLineas(labelTemp, dataTemp);  // Gráfico de líneas
+          this. mostrarGraficoDona(labelTemp, dataTemp)// grafico de dona
         }
       },
       error:(e) => {}
