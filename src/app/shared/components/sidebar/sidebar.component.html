@@ -29,6 +29,7 @@
                 <ng-container *ngFor="let medicamento of medicamentosStockBajo">
                     <button mat-menu-item>
                         <div class="my-2 w-60 text-base">
+                            <mat-icon>report</mat-icon>
                             <span class="font-bold">{{ medicamento.nombre }}</span>
                             <span> tiene pocas unidades en stock</span>
                         </div>
@@ -40,7 +41,7 @@
                     <button mat-menu-item disabled>
                       <span>No hay notificaciones</span>
                     </button>
-                  </ng-container>
+                </ng-container>
 
                 
             </ng-container>
