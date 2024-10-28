@@ -19,6 +19,7 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 import {ModalmmedicamentosComponent} from '../../components/modalmmedicamentos/modalmmedicamentos.component';
+import {ModalcategoriaComponent} from '../../components/modalcategoria/modalcategoria.component'
 
 import {Medicamento} from '../../../../core/models/medicamento';
 import {MedicamentoService} from './../../services/medicamento.service';
@@ -100,6 +101,15 @@ export class MedicamentosComponent implements OnInit, AfterViewInit {
     }).afterClosed().subscribe(resultado => {
       if(resultado === 'true')this.obtenerMedicamentos();
     });
+  }
+
+  //metodo para el modal de crear categoria
+  nuevaCategoria(){
+    this.dialog.open(ModalcategoriaComponent,{
+      disableClose:true
+    }).afterClosed().subscribe(resultado => {
+      if(resultado === 'true')this.obtenerMedicamentos();
+    })
   }
 
   //metodo para elimainar un usuario

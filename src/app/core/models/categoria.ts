@@ -1,4 +1,5 @@
 export interface Categoria {
-    idCategoria:string,
+    idCategoria:number,
     nombre:string
+    esActivo:number,
 }

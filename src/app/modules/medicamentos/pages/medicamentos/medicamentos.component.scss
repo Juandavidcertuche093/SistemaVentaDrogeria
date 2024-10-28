@@ -50,3 +50,12 @@ th.mat-header-cell, td.mat-cell {
 .stock-bajo {
     color: orange; /* Color naranja para stock menor o igual a 10 */
 }
+
+
+.categoria-button {
+    background-color: #1DB954 !important; /* Cambia este color al que prefieras */
+    color: white !important;
+}
+.categoria-button:hover {
+    background-color: #1AA34A !important; /* Color al pasar el mouse */
+}

@@ -1,9 +1,15 @@
 <p class="text-2xl font-bold text-sky-800 ">Medicamento</p>
 
 <mat-card class="p-2 mt-5 mx-10 mb-10">
-    <mat-card-title class="pb-4">
+
+    <mat-card-title class="pb-4 flex items-center space-x-4">
+        <!-- Botón Nuevo Medicamento -->
         <button mat-raised-button color="primary" (click)="nuevoMedicamento()">
             <mat-icon mat-list-icon>add</mat-icon>Nuevo Medicamento
+        </button>
+        <!-- Botón Nueva Categoria con color personalizado -->
+        <button mat-raised-button class="categoria-button" (click)="nuevaCategoria()">
+            <mat-icon mat-list-icon>add</mat-icon>Nueva Categoria
         </button>
     </mat-card-title>
 
