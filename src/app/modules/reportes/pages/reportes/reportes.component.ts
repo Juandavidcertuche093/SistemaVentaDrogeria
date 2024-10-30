@@ -25,6 +25,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import moment from 'moment';
 import * as XLSX from 'xlsx';
 
+import { jsPDF } from 'jspdf';
+import 'jspdf-autotable';
+
 import { Reporte } from '../../../../core/models/reporte';
 import {VentaService} from '../../services/venta.service';
 import {UtilidadService} from '../../../../services/utilidad.service';
@@ -110,6 +113,33 @@ export class ReportesComponent implements OnInit {
 
     XLSX.utils.book_append_sheet(wb,ws,"Reporte");
     XLSX.writeFile(wb,"Reporte Ventas.xlsx")
+  }
+
+  //
+  exportarPDF() {
+    const doc = new jsPDF();
+    const total = this.listaVentasReporte.reduce((acc, venta) => acc + Number(venta.total), 0);
+
+    doc.text('Reporte de Ventas', 14, 10);
+    doc.text(`Total Ventas: ${total}`, 14, 20);
+
+    (doc as any).autoTable({
+      head: [['Fecha', 'No. Venta', 'Tipo Pago', 'Total', 'Producto', 'Cantidad', 'Precio', 'Total Producto', 'usuario']],//usuario
+      body: this.listaVentasReporte.map(venta => [
+        venta.fechaRegistro, 
+        venta.numeroDocumento, 
+        venta.tipoPago, 
+        venta.totalVenta, 
+        venta.medicamento, 
+        venta.cantidad, 
+        venta.precio, 
+        venta.total, 
+        venta.usuario
+      ]),
+      startY: 30
+    });
+
+    doc.save("Reporte_Ventas.pdf");
   }
 
 }

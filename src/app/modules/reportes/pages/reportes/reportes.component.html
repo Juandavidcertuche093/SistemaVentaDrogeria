@@ -37,13 +37,21 @@
 
         </form>
 
-          <!-- boton para exportar formulario a Excel-->
-          <button mat-raised-button color="warn"
-          [disabled]="listaVentasReporte.length < 1"
-          (click)="exportarExcel()"
-          >
-          <mat-icon>feed</mat-icon>Exportar Excel
+        <!-- boton para exportar formulario a Excel-->
+        <div class="pb-4 flex items-center space-x-4">
+            <button mat-raised-button color="primary"
+                [disabled]="listaVentasReporte.length < 1"
+                (click)="exportarExcel()">
+                <mat-icon>feed</mat-icon>Exportar Excel
             </button>
+        
+            <button mat-raised-button color="warn" 
+                [disabled]="listaVentasReporte.length < 1" 
+                (click)="exportarPDF()">
+                <mat-icon>picture_as_pdf</mat-icon>Exportar PDF
+            </button>
+        </div>
+        
 
             <div class="mat-elevation-z2" style="margin-top: 15px;">
 
