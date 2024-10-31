@@ -114,20 +114,42 @@ export class ReportesComponent implements OnInit {
     XLSX.writeFile(wb,"Reporte Ventas.xlsx")
   }
 
-  //metodo para exportar a pdf
+ //metodo para exportar a pdf
   exportarPDF() {
     const doc = new jsPDF();
+  
+    //calcular el total de ventas
     const total = this.listaVentasReporte.reduce((acc, venta) => acc + parseFloat(venta.total || '0'), 0);
+
+    // Título de la droguería
+    doc.setFontSize(24);  // Tamaño de letra más grande para el nombre
+    doc.setFont("helvetica", "bold");  // Tipo de letra en negrita
+    doc.setTextColor(30);
+    doc.text('EBEN-EZER', doc.internal.pageSize.width / 2, 15, { align: 'center' }); // Posición Y en 15
+
+    //Configuración del encabezado
+    doc.setFontSize(20);  // Tamaño más grande
+    // doc.setFont("helvetica", "bold");  // Tipo de letra en negrita
+    doc.setTextColor(25);
+    doc.text('Reporte de Ventas', doc.internal.pageSize.width / 2, 25, { align: 'center' });
+    
+    // Detalle de la empresa y fecha
+    doc.setFontSize(16);
+    doc.setFont("times", "normal");  // Cambiar el tipo de letra si se desea
+    doc.setTextColor(100);
+    doc.text(`Total Ventas: ${total.toLocaleString('es-CO')}`, 14, 40); // Ajusta la posición Y a 30 para mayor espacio
+    doc.text(`Fecha de generación: ${new Date().toLocaleDateString()}`, 14, 50); // Añade espacio entre las líneas
+
+    // Línea divisoria antes de la tabla
+    doc.setDrawColor(0);  // Color de la línea
+    doc.setLineWidth(0.5); // Grosor de la línea
+    doc.line(14, 55, doc.internal.pageSize.width - 14, 55); // Coordenadas de la línea horizontal
   
-    // Título del reporte y total de ventas
-    doc.text('Reporte de Ventas', 14, 10);
-    doc.text(`Total Ventas: ${total.toLocaleString('es-CO')}`, 14, 20);
-  
-    // Agregar tabla con paginación y número de página
+    // Tabla de ventas con estilos
     (doc as any).autoTable({
-      head: [['Fecha', 'No. Venta', 'Tipo Pago', 'Total', 'Producto', 'Cantidad', 'Precio', 'Total Producto', 'Usuario']],
+      head: [[ 'No. Venta', 'Tipo Pago', 'Total', 'Producto', 'Cantidad', 'Precio', 'Total Producto']],//'Fecha', , 'Usuario'
       body: this.listaVentasReporte.map(venta => [
-        venta.fechaRegistro,
+        // venta.fechaRegistro,
         venta.numeroDocumento,
         venta.tipoPago,
         venta.totalVenta,
@@ -135,20 +157,24 @@ export class ReportesComponent implements OnInit {
         venta.cantidad,
         venta.precio,
         venta.total,
-        venta.usuario
+        // venta.usuario
       ]),
-      startY: 30,
+      startY: 60,
+      theme: 'striped',  // Opción de tema para mejorar la apariencia
+      headStyles: { fillColor: [135, 206, 235] }, // Encabezado azul claro
+      bodyStyles: { textColor: 50 }, // Color del texto del cuerpo
+      footStyles: { fillColor: [200, 200, 200] }, // Pie de página en gris
+      styles: { fontSize: 10, cellPadding: 4 },  // Tamaño de fuente y padding en celdas
       didDrawPage: function (data: any) {
         // Añadir el número de página en la parte inferior
         const pageCount = doc.getNumberOfPages();
         doc.setFontSize(10);
         doc.text(`Página ${pageCount}`, data.settings.margin.left, doc.internal.pageSize.height - 10);
       },
-      margin: { top: 30 } // Define el margen superior para espacio de encabezado
+      margin: { top: 35 }  // Ajuste de margen superior para el encabezado
     });
   
+    // Guardar el PDF
     doc.save("Reporte_Ventas.pdf");
   }
-  
-
 }
