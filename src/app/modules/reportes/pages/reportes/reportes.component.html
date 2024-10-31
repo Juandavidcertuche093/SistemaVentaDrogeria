@@ -41,6 +41,7 @@
         <div class="pb-4 flex items-center space-x-4">
             <button mat-raised-button color="primary"
                 [disabled]="listaVentasReporte.length < 1"
+                class="boton-exportar-excel" 
                 (click)="exportarExcel()">
                 <mat-icon>feed</mat-icon>Exportar Excel
             </button>

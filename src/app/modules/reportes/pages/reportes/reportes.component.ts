@@ -16,7 +16,6 @@ import {MatDividerModule} from '@angular/material/divider';
 import { CdkTableModule } from '@angular/cdk/table';
 import { MatTableModule } from '@angular/material/table';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import { MAT_DATE_FORMATS } from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatPaginatorModule} from '@angular/material/paginator';
@@ -115,31 +114,41 @@ export class ReportesComponent implements OnInit {
     XLSX.writeFile(wb,"Reporte Ventas.xlsx")
   }
 
-  //
+  //metodo para exportar a pdf
   exportarPDF() {
     const doc = new jsPDF();
-    const total = this.listaVentasReporte.reduce((acc, venta) => acc + Number(venta.total), 0);
-
+    const total = this.listaVentasReporte.reduce((acc, venta) => acc + parseFloat(venta.total || '0'), 0);
+  
+    // Título del reporte y total de ventas
     doc.text('Reporte de Ventas', 14, 10);
-    doc.text(`Total Ventas: ${total}`, 14, 20);
-
+    doc.text(`Total Ventas: ${total.toLocaleString('es-CO')}`, 14, 20);
+  
+    // Agregar tabla con paginación y número de página
     (doc as any).autoTable({
-      head: [['Fecha', 'No. Venta', 'Tipo Pago', 'Total', 'Producto', 'Cantidad', 'Precio', 'Total Producto', 'usuario']],//usuario
+      head: [['Fecha', 'No. Venta', 'Tipo Pago', 'Total', 'Producto', 'Cantidad', 'Precio', 'Total Producto', 'Usuario']],
       body: this.listaVentasReporte.map(venta => [
-        venta.fechaRegistro, 
-        venta.numeroDocumento, 
-        venta.tipoPago, 
-        venta.totalVenta, 
-        venta.medicamento, 
-        venta.cantidad, 
-        venta.precio, 
-        venta.total, 
+        venta.fechaRegistro,
+        venta.numeroDocumento,
+        venta.tipoPago,
+        venta.totalVenta,
+        venta.medicamento,
+        venta.cantidad,
+        venta.precio,
+        venta.total,
         venta.usuario
       ]),
-      startY: 30
+      startY: 30,
+      didDrawPage: function (data: any) {
+        // Añadir el número de página en la parte inferior
+        const pageCount = doc.getNumberOfPages();
+        doc.setFontSize(10);
+        doc.text(`Página ${pageCount}`, data.settings.margin.left, doc.internal.pageSize.height - 10);
+      },
+      margin: { top: 30 } // Define el margen superior para espacio de encabezado
     });
-
+  
     doc.save("Reporte_Ventas.pdf");
   }
+  
 
 }
