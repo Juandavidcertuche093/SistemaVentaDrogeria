@@ -146,17 +146,17 @@ export class ReportesComponent implements OnInit {
   
     // Tabla de ventas con estilos
     (doc as any).autoTable({
-      head: [[ 'No. Venta', 'Tipo Pago', 'Total', 'Producto', 'Cantidad', 'Precio', 'Total Producto']],//'Fecha', , 'Usuario'
+      head: [[ 'No. Venta', 'Tipo Pago',  'Producto', 'Cantidad', 'Precio', 'Total Producto', 'Usuario']],//'Fecha',  'Total',
       body: this.listaVentasReporte.map(venta => [
         // venta.fechaRegistro,
         venta.numeroDocumento,
         venta.tipoPago,
-        venta.totalVenta,
+        // venta.totalVenta,
         venta.medicamento,
         venta.cantidad,
         venta.precio,
         venta.total,
-        // venta.usuario
+        venta.usuario
       ]),
       startY: 60,
       theme: 'striped',  // Opción de tema para mejorar la apariencia
