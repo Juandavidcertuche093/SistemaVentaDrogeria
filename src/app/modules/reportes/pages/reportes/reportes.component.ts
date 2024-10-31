@@ -129,14 +129,13 @@ export class ReportesComponent implements OnInit {
 
     //Configuración del encabezado
     doc.setFontSize(20);  // Tamaño más grande
-    // doc.setFont("helvetica", "bold");  // Tipo de letra en negrita
     doc.setTextColor(25);
     doc.text('Reporte de Ventas', doc.internal.pageSize.width / 2, 25, { align: 'center' });
     
     // Detalle de la empresa y fecha
     doc.setFontSize(16);
     doc.setFont("times", "normal");  // Cambiar el tipo de letra si se desea
-    doc.setTextColor(100);
+    doc.setTextColor(50);
     doc.text(`Total Ventas: ${total.toLocaleString('es-CO')}`, 14, 40); // Ajusta la posición Y a 30 para mayor espacio
     doc.text(`Fecha de generación: ${new Date().toLocaleDateString()}`, 14, 50); // Añade espacio entre las líneas
 
