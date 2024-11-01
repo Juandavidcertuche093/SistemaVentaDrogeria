@@ -16,6 +16,11 @@
     margin-bottom: 10px;
 }
 
+mat-sidenav {
+    background-color: #f6f5fb; /* Azul gris oscuro #b7bcbf*/
+    color: white; /* Ajusta el color de texto para contraste */
+}
+
 
 .header-text {
     height: 3rem;
@@ -50,9 +55,6 @@
 }
 
 
-
-
-
 mat-toolbar{
     position: relative;
     z-index: 5;
@@ -61,6 +63,7 @@ mat-toolbar{
 
 .content {
     padding: 24px;
+    background-color: #f8fafc;
 }
 
 mat-sidenav-container{

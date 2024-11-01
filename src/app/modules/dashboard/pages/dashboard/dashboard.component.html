@@ -3,9 +3,9 @@
 <mat-card class="p-2 mt-5 mx-10 mb-10">
   <mat-card-content>
     <!-- Contenedor de las tarjetas centrado -->      
-    <div class="mb-12 grid gap-y-6 gap-x-6 md:grid-cols-2 xl:grid-cols-3 justify-center">
-      <!-- Tarjeta 1 -->
-        <div class="relative flex flex-col bg-clip-border rounded-xl bg-blue-200 text-gray-700 shadow-sm max-w-xs">
+    <div class="mb-12 grid gap-y-6 gap-x-6 md:grid-cols-2 xl:grid-cols-4 justify-center">
+        <!-- Tarjeta 1 -->
+        <div class="relative flex flex-col bg-clip-border rounded-xl bg-gradient-to-tr from-blue-900 to-blue-600 text-white shadow-blue-500/40 shadow-sm max-w-xs">
           <div class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-blue-600 to-blue-400 text-white shadow-blue-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
             <div mat-card-avatar>
               <mat-icon>payments</mat-icon>
@@ -14,12 +14,12 @@
           <div class="p-4 text-right">
             <p class="block text-2xl font-bold">Total Ingresos</p>
             <p class="text-2xl font-semibold">${{totalIngresos}}</p>
-            <p class="text-sm text-gray-500">Ingresos esta semana</p>
+            <p class="text-sm text-white">Ingresos esta semana</p>
           </div>
         </div>
       <!-- Tarjeta 2 -->
-        <div class="relative flex flex-col bg-clip-border rounded-xl bg-pink-200 text-gray-700 shadow-md max-w-xs">
-          <div class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-pink-600 to-pink-400 text-white shadow-pink-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
+        <div class="relative flex flex-col bg-clip-border rounded-xl bg-gradient-to-tr from-blue-900 to-blue-600 text-white shadow-blue-500/40 shadow-sm max-w-xs">
+          <div class="g-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-blue-600 to-blue-400 text-white shadow-blue-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
             <div mat-card-avatar>
               <mat-icon>sell</mat-icon>
             </div>
@@ -27,12 +27,12 @@
           <div class="p-4 text-right">
             <p class="block text-2xl font-bold ">Total Ventas</p>
             <p class="text-2xl font-semibold">{{totalVentas}}</p>
-            <p class="text-sm text-gray-500">Total ventas semana</p>
+            <p class="text-sm text-white">Total ventas semana</p>
           </div>
         </div>
       <!-- Tarjeta 3 -->
-        <div class="relative flex flex-col bg-clip-border rounded-xl bg-green-200 text-gray-700 shadow-md max-w-xs">
-          <div class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-green-600 to-green-400 text-white shadow-green-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
+        <div class="relative flex flex-col bg-clip-border rounded-xl bg-gradient-to-tr from-blue-900 to-blue-600 text-white shadow-blue-500/40 shadow-sm max-w-xs">
+          <div class="g-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-blue-600 to-blue-400 text-white shadow-blue-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
             <div mat-card-avatar>
               <mat-icon>vaccines</mat-icon>
             </div>
@@ -40,7 +40,20 @@
           <div class="p-4 text-right">
             <p class="block text-2xl font-bold">Medicamentos</p>
             <p class="text-2xl font-semibold">{{totalProductos}}</p>
-            <p class="text-sm text-gray-500">Total medicamentos en stock</p>
+            <p class="text-sm text-white">Total medicamentos en stock</p>
+          </div>
+        </div>
+        <!-- Tarjeta 4 -->
+        <div class="relative flex flex-col bg-clip-border rounded-xl bg-gradient-to-tr from-blue-900 to-blue-600 text-white shadow-blue-500/40 shadow-sm max-w-xs">
+          <div class="g-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-blue-600 to-blue-400 text-white shadow-blue-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
+            <div mat-card-avatar>
+              <mat-icon>group</mat-icon>
+            </div>
+          </div>
+          <div class="p-4 text-right">
+            <p class="block text-2xl font-bold">Usuarios</p>
+            <p class="text-2xl font-semibold">{{totalUsuarios}}</p>
+            <p class="text-sm text-white">Total de usuarios registrados</p>
           </div>
         </div>
       </div>
@@ -49,23 +62,23 @@
 
 <!-- Contenedor para las tarjetas de gráficos -->
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mx-10">
-  <!-- Primera tarjeta con gráfico de barras -->
-  <mat-card class="p-2 mt-5 mb-10">
-    <mat-card-content>
-      <div style="width: 100%; height: 400px;">
-        <canvas id="chartBarras"></canvas>
-      </div>
-    </mat-card-content>
-  </mat-card>
+    <!-- Primera tarjeta con gráfico de barras -->
+    <mat-card class="p-2 mt-5 mb-10">
+      <mat-card-content>
+        <div style="width: 100%; height: 400px;">
+          <canvas id="chartBarras"></canvas>
+        </div>
+      </mat-card-content>
+    </mat-card>
 
-  <!-- Segunda tarjeta con gráfico de líneas -->
-  <mat-card class="p-2 mt-5 mb-10">
-    <mat-card-content>
-      <div style="width: 100%; height: 400px;">
-        <canvas id="chartDona"></canvas>
-      </div>
-    </mat-card-content>
-  </mat-card>
+    <!-- Segunda tarjeta con gráfico de dona -->
+    <mat-card class="p-2 mt-5 mb-10">
+      <mat-card-content>
+        <div style="width: 100%; height: 400px;">
+          <canvas id="chartDona"></canvas>
+        </div>
+      </mat-card-content>
+    </mat-card>
 </div>
 
 <mat-card class="p-2 mt-5 mx-10 mb-10">

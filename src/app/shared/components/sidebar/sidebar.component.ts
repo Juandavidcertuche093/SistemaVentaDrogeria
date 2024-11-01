@@ -36,7 +36,7 @@ export class SidebarComponent {
   sideNavCollapse = signal(false)
 
   //Propiedad calculada que devuelve el ancho de la barra lateral Si está contraída, el ancho es de '65 px'; de lo contrario, es de '250 px'. 
-  sidenavWidth = computed(() => this.collapse() ? '65px' : '250px');
+  sidenavWidth = computed(() => this.collapse() ? '65px' : '220px');
 
   listaMenus:Menu[] = [];
   correoUsuario:string='';

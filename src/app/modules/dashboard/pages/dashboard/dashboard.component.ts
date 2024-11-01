@@ -1,6 +1,4 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-import { map } from 'rxjs/operators';
 
 //Angular Material
 import {MatCardModule} from '@angular/material/card';
@@ -27,7 +25,8 @@ export class DashboardComponent implements OnInit {
 
   totalIngresos:string='0';
   totalVentas:string='0';
-  totalProductos:string='0'
+  totalProductos:string='0';
+  totalUsuarios:string='0'
 
   constructor(
     private dashboardServicio: DashboardService
@@ -39,19 +38,19 @@ export class DashboardComponent implements OnInit {
       data:{
         labels:labelGrafico,
         datasets:[{
-          label:'# de Ventas',
+          label:'Ventas',
           data:dataGrafico,
-          backgroundColor:[
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(153, 102, 255, 0.2)', 
-            'rgba(255, 159, 64, 0.2)', 
-            'rgba(75, 192, 192, 0.2)',
+          backgroundColor: [
+            'rgba(30, 64, 175, 0.8)', // #1e40af (blue-800) con 80% de opacidad
+            'rgba(30, 64, 175, 0.8)', // #1e40af (blue-800) con 80% de opacidad
+            'rgba(30, 64, 175, 0.8)', // #1e40af (blue-800) con 80% de opacidad
+            'rgba(30, 64, 175, 0.8)', // #1e40af (blue-800) con 80% de opacidad
           ],
-          borderColor:[
-            'rgba(54, 162, 235, 1)',
-            'rgba(153, 102, 255, 1)', 
-            'rgba(255, 159, 64, 1)', 
-            'rgba(75, 192, 192, 1)'
+          borderColor: [
+            'rgba(37, 99, 235, 1)',       // #2563eb (blue-800)
+            'rgba(29, 78, 216, 1)',       // #1d4ed8 (blue-800)
+            'rgba(37, 99, 235, 1)',        // #2563eb (blue-800)
+            'rgba(30, 58, 138, 1)'        // #1e3a8a (blue-800)
           ],
           borderWidth:1
         }]
@@ -68,6 +67,47 @@ export class DashboardComponent implements OnInit {
     })
   }
 
+  
+  mostrarGraficoDona(labelGrafico: any[], dataGrafico: any[]) {
+    const chartDona = new Chart('chartDona', {
+      type: 'doughnut', // Cambiado de 'line' a 'doughnut'
+      data: {
+        labels: labelGrafico,
+        datasets: [{
+          label: 'Ventas',
+          data: dataGrafico,
+          backgroundColor: [
+            'rgba(37, 99, 235, 0.8)',   // #2563eb (blue-700)
+            'rgba(29, 78, 216, 0.8)',   // #1d4ed8 (blue-800)
+            'rgba(30, 64, 175, 0.8)',   // #1e40af (blue-900)
+            'rgba(30, 58, 138, 0.8)',   // #1e3a8a (blue-950)
+            'rgba(23, 37, 84, 0.8)',    // #172554
+            'rgba(30, 64, 175, 0.8)'    // #1e40af (extra color if needed)
+          ],
+          borderColor: [
+            'rgba(37, 99, 235, 1)',     // #2563eb (blue-700)
+            'rgba(29, 78, 216, 1)',     // #1d4ed8 (blue-800)
+            'rgba(30, 64, 175, 1)',     // #1e40af (blue-900)
+            'rgba(30, 58, 138, 1)',     // #1e3a8a (blue-950)
+            'rgba(23, 37, 84, 1)',      // #172554
+            'rgba(30, 64, 175, 1)'      // #1e40af (extra color if needed)
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        maintainAspectRatio: false,
+        responsive: true,
+        cutout: '50%',  // Esto crea el espacio en el centro para el gráfico de dona
+        plugins: {
+          legend: {
+            position: 'left',  // Posición de la leyenda
+          }
+        }
+      }
+    });
+  }
+
   mostrarGraficoLineas(labelGrafico: any[], dataGrafico: any[]) {
     const chartLineas = new Chart('chartLineas', {
       type: 'line',
@@ -77,7 +117,7 @@ export class DashboardComponent implements OnInit {
           label: 'Ventas',
           data: dataGrafico,
           fill: false,
-          borderColor: 'rgb(75, 192, 192)',
+          borderColor: 'rgba(30, 64, 175, 0.9)', // #1e40af (blue-800) con 80% de opacidad
           tension: 0.1
         }]
       },
@@ -91,48 +131,7 @@ export class DashboardComponent implements OnInit {
         }
       }
     });
-  }
-
-  mostrarGraficoDona(labelGrafico: any[], dataGrafico: any[]) {
-    const chartDona = new Chart('chartDona', {
-      type: 'doughnut', // Cambiado de 'line' a 'doughnut'
-      data: {
-        labels: labelGrafico,
-        datasets: [{
-          label: 'Ventas',
-          data: dataGrafico,
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',  // Colores para cada porción
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-          ],
-          borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
-          ],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        maintainAspectRatio: false,
-        responsive: true,
-        cutout: '50%',  // Esto crea el espacio en el centro para el gráfico de dona
-        plugins: {
-          legend: {
-            position: 'top',  // Posición de la leyenda
-          }
-        }
-      }
-    });
-  }
-  
+  }  
 
 
   ngOnInit(): void {
@@ -140,17 +139,20 @@ export class DashboardComponent implements OnInit {
     .subscribe({
       next:(data) => {
         if (data.status) {
-          this.totalIngresos = data.value.totalIngresos;
+          // this.totalIngresos = data.value.totalIngresos;
+          this.totalIngresos = parseInt(data.value.totalIngresos).toLocaleString('es-CO');
           this.totalVentas = data.value.totalVentas;
           this.totalProductos = data.value.totalProductos;
+          this.totalUsuarios = data.value.totalUsuarios;
           
           const arrayData: any[] = data.value.ventasUltimaSemana
           const labelTemp = arrayData.map((value) => value.fecha);
           const dataTemp = arrayData.map((value) => value.total);
 
           this.mostrarGrafico(labelTemp,dataTemp); //Gráfico de barras
-          this.mostrarGraficoLineas(labelTemp, dataTemp);  // Gráfico de líneas
           this. mostrarGraficoDona(labelTemp, dataTemp)// grafico de dona
+          this.mostrarGraficoLineas(labelTemp, dataTemp);  // Gráfico de líneas
+          
         }
       },
       error:(e) => {}

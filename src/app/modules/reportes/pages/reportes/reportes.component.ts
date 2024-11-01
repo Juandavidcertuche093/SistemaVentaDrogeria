@@ -136,7 +136,7 @@ export class ReportesComponent implements OnInit {
     doc.setFontSize(16);
     doc.setFont("times", "normal");  // Cambiar el tipo de letra si se desea
     doc.setTextColor(50);
-    doc.text(`Total Ventas: ${total.toLocaleString('es-CO')}`, 14, 40); // Ajusta la posición Y a 30 para mayor espacio
+    doc.text(`Total Ingresos: ${total.toLocaleString('es-CO')}`, 14, 40); // Ajusta la posición Y a 30 para mayor espacio
     doc.text(`Fecha de generación: ${new Date().toLocaleDateString()}`, 14, 50); // Añade espacio entre las líneas
 
     // Línea divisoria antes de la tabla
