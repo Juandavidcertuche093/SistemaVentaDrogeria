@@ -14,7 +14,7 @@ import { Login } from '../../../../core/models/login';
 export class LoginFormComponent {
   
   formularioLogin = this.formBuilder.nonNullable.group({
-    email:['',[Validators.required]],
+    email:['',[Validators.required, Validators.email]],
     password:['',[Validators.required, Validators.minLength(5)]]
   });
 
