@@ -2,22 +2,22 @@ import { Component, inject, OnInit } from '@angular/core';
 
 //Angular Material
 import {MatCardModule} from '@angular/material/card';
-import {MatGridListModule} from '@angular/material/grid-list';
+// import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
+// import { MatMenuModule } from '@angular/material/menu';
 
 //Mostrar gráficos.
 import { Chart, registerables } from 'chart.js';
-import { BaseChartDirective } from 'ng2-charts';
+// import { BaseChartDirective } from 'ng2-charts';
 
 import { DashboardService } from '../../services/dashboard.service';
-import { CommonModule } from '@angular/common';
+// import { CommonModule } from '@angular/common';
 Chart.register(...registerables);
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [MatCardModule, MatGridListModule, MatIconModule, BaseChartDirective, CommonModule, MatMenuModule],
+  imports: [MatCardModule, MatIconModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
