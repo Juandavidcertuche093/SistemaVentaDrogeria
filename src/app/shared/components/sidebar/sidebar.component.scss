@@ -10,6 +10,10 @@
 //     text-align: center;
 // }
 
+.menu-item mat-icon {
+    font-size: 26px; /* Cambia a cualquier tamaño deseado */
+}
+
 .sidenav-header img {
     border-radius: 100%;
     object-fit: cover;
@@ -50,7 +54,7 @@ mat-sidenav {
 }
 
 .selected-menu-item {
-    border-left-color: blue;
+    border-left-color:blue;
     background: rgba(0, 0, 0, 0.05);
 }
 
