@@ -15,6 +15,32 @@
 }
 
 
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    // margin-bottom: 8px; /* Espacio entre los íconos */
+}
+
+.menu-item.with-separator {
+    border-bottom: 1px solid transparent; /* Sin línea por defecto */
+}
+
+.menu-item.with-separator:not(:last-child) {
+    border-bottom: 1px solid #1f1f20; /* Línea separadora visible */
+    margin-bottom: 5px; /* Aumenta el espacio si lo deseas */
+}
+
+/* Línea desaparece cuando la barra está expandida */
+.menu-item:not(.with-separator) {
+    border-bottom: none;
+}
+
+/* Efecto hover opcional */
+.menu-item.with-separator:hover {
+    background-color: rgba(0, 0, 0, 0.05); /* Cambia el fondo al pasar el cursor */
+}
+
 .sidenav-header img {
     border-radius: 100%;
     object-fit: cover;
@@ -48,11 +74,11 @@ mat-sidenav {
     height: 0px !important;
 }
 
-.menu-item{
-    border-left: 5px solid;
-    border-left-color: rgba(0, 0, 0, 0);
+// .menu-item{
+//     border-left: 5px solid;
+//     border-left-color: rgba(0, 0, 0, 0);
 
-}
+// }
 
 .selected-menu-item {
     border-left-color:blue;

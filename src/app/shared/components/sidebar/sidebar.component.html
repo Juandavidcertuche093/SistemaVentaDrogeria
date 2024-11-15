@@ -75,6 +75,7 @@
                 routerLinkActive="selected-menu-item"
                 #rla="routerLinkActive"
                 [activated]="rla.isActive"
+                [ngClass]="{'with-separator': sideNavCollapse()}"
             >
                 <mat-icon [fontSet]="rla.isActive ? 'material-icons': 'material-icons-outlined'"
                  matListItemIcon

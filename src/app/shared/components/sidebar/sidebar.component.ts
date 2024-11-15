@@ -33,7 +33,9 @@ export class SidebarComponent {
   //Una señal reactiva que registra si la barra lateral está contraída o no
   collapse = signal(true)
 
-  sideNavCollapse = signal(false)
+  // sideNavCollapse = signal(false)
+
+  sideNavCollapse = computed(() => this.collapse());
 
   //Propiedad calculada que devuelve el ancho de la barra lateral Si está contraída, el ancho es de '65 px'; de lo contrario, es de '250 px'. 
   sidenavWidth = computed(() => this.collapse() ? '65px' : '220px');
