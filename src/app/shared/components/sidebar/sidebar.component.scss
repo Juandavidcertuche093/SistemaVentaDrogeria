@@ -15,20 +15,13 @@
 }
 
 
-.menu-item {
-    display: flex;
-    align-items: center;
-    padding: 10px 16px;
-    // margin-bottom: 8px; /* Espacio entre los íconos */
-}
-
 .menu-item.with-separator {
     border-bottom: 1px solid transparent; /* Sin línea por defecto */
 }
 
 .menu-item.with-separator:not(:last-child) {
     border-bottom: 1px solid #1f1f20; /* Línea separadora visible */
-    margin-bottom: 5px; /* Aumenta el espacio si lo deseas */
+    // margin-bottom: 5px; /* Aumenta el espacio si lo deseas */
 }
 
 /* Línea desaparece cuando la barra está expandida */
@@ -48,7 +41,7 @@
 }
 
 mat-sidenav {
-    background-color: #f6f5fb; /* Azul gris oscuro #b7bcbf*/
+    background-color: #f6f5fb; /* Azul gris oscuro #f6f5fb*/
     color: white; /* Ajusta el color de texto para contraste */
 }
 
@@ -104,6 +97,13 @@ mat-sidenav-container{
 mat-sidenav, mat-sidenav-content{
     transition: all 500ms ease-in-out;
 }
+
+mat-sidenav .menu-item:hover {
+    background-color: #c9e5fa; /* Azul claro */
+    color: #070707; /* Azul más oscuro para el texto o ícono */
+    transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+}
+
 
 .custom-notification-menu {
     min-width: 300px; /* Ajusta el ancho mínimo */
