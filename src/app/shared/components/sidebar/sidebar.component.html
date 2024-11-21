@@ -1,5 +1,6 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
+        
         <h1>EBEN-EZER</h1>
 
         <button mat-icon-button (click)="collapse.set(!collapse())">
@@ -88,6 +89,7 @@
         </mat-nav-list>
 
     </mat-sidenav>
+
     <mat-sidenav-content class="content"[style.margin-left]="sidenavWidth()">
          <router-outlet></router-outlet>
     </mat-sidenav-content>

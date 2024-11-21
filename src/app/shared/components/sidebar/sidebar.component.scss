@@ -2,13 +2,6 @@
     transition: all 500ms ease-in-out;
 }
 
-// .sidenav-header {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center; /* Centra los elementos horizontalmente */
-//     padding-top: 15%;
-//     text-align: center;
-// }
 
 .menu-item mat-icon {
     font-size: 26px; /* Cambia a cualquier tamaño deseado */
@@ -87,7 +80,7 @@ mat-toolbar{
 
 .content {
     padding: 24px;
-    background-color: #f8fafc;
+    background-color: #e7eaed;//#f8fafc
 }
 
 mat-sidenav-container{
@@ -99,7 +92,7 @@ mat-sidenav, mat-sidenav-content{
 }
 
 mat-sidenav .menu-item:hover {
-    background-color: #c9e5fa; /* Azul claro */
+    background-color: #8ccdff; /* Azul claro */
     color: #070707; /* Azul más oscuro para el texto o ícono */
     transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
 }
